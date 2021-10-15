@@ -105,7 +105,7 @@ namespace api_gateway.Controllers
             PackageResponseModel responseModel = ServiceToResponseModelConverter.ConvertPackage(model, await GetAllPersons(), await GetAllRooms());
 
             //send registration mail
-            await "https://mailservice20210603092014.azurewebsites.net/api/TrackAndTraceMail?code=bTMCXQQGWaQycYLfbP/Vq749V03PPkSbmwRyfQlBXlVQq9WZyR4U7Q==".PostJsonAsync(responseModel);
+            //await "https://mailservice20210603092014.azurewebsites.net/api/TrackAndTraceMail?code=bTMCXQQGWaQycYLfbP/Vq749V03PPkSbmwRyfQlBXlVQq9WZyR4U7Q==".PostJsonAsync(responseModel);
 
             return CreatedAtAction("PostPackage", responseModel);
         }
@@ -130,6 +130,7 @@ namespace api_gateway.Controllers
 
             //Post ticket
             IFlurlResponse flurlPostResponse = await $"{ Constants.PackageApiUrl }/api/tickets".PostJsonAsync(request);
+            Task test = await $"{ Constants.PackageApiUrl }/api/tickets".PostJsonAsync(request).ReceiveJson<Task>();
             var postResponse = flurlPostResponse.GetResponse();
 
             if (postResponse.StatusCode != HttpStatusCode.OK)
@@ -151,7 +152,7 @@ namespace api_gateway.Controllers
             if (pkg.RouteFinished)
             {
                 //send email
-                await "https://mailservice20210603092014.azurewebsites.net/api/ArrivalMail?code=gYOUs9FO7WwwNXz2eSGtZM0AFxQl/RQvOJ4RF0uotwYLe7l/AIGGKg==".PostJsonAsync(pkg);
+                //await "https://mailservice20210603092014.azurewebsites.net/api/ArrivalMail?code=gYOUs9FO7WwwNXz2eSGtZM0AFxQl/RQvOJ4RF0uotwYLe7l/AIGGKg==".PostJsonAsync(pkg);
             }
 
             return CreatedAtAction("PostTicket", responseModel);
