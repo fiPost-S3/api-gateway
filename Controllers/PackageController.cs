@@ -108,8 +108,8 @@ namespace api_gateway.Controllers
             PackageServiceModel model = await flurlPostResponse.GetJsonAsync<PackageServiceModel>();
             PackageResponseModel responseModel = ServiceToResponseModelConverter.ConvertPackage(model, await GetAllPersons(), await GetAllRooms());
 
-            //send registration mail
-            await "https://mailservice20210603092014.azurewebsites.net/api/TrackAndTraceMail?code=bTMCXQQGWaQycYLfbP/Vq749V03PPkSbmwRyfQlBXlVQq9WZyR4U7Q==".PostJsonAsync(responseModel);
+            ////send registration mail
+            //await "https://mailservice20210603092014.azurewebsites.net/api/TrackAndTraceMail?code=bTMCXQQGWaQycYLfbP/Vq749V03PPkSbmwRyfQlBXlVQq9WZyR4U7Q==".PostJsonAsync(responseModel);
 
             return CreatedAtAction("PostPackage", responseModel);
         }
