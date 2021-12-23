@@ -12,24 +12,12 @@ namespace api_gateway.Controllers
     [ApiController]
     public class AuthenticationController
     {
-        /*
-        TokenController TC = new TokenController();
-
-        [Route("/[controller]/register")]
-        [HttpPost]
-        public object register()
-        {
-            var x = TC.GenerateToken();
-            return x;
-        }*/
-
         [HttpGet]
         [Route("/[controller]/auth")]
         [Authorize]
         public string authorize()
         {
-            //var user = User.Identity;
-            return "huts";
+            return "You are Authorized!";
         }
     }
 }
